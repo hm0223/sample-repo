@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>sample-repo</artifactId>
+		<groupId>com.hm</groupId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>maven-archetype-samples</artifactId>
+	
+	<name>maven-archetype-samples</name>
+	<description>maven-archetype-samples</description>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<properties>
+		<java.version>1.8</java.version>
+		<pj.version>1.0.0</pj.version>
+	</properties>
+
+	
+	<modules>
+		<module>maven-archetype-samples-api</module>
+		<module>maven-archetype-samples-service</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.7.5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-archetype-plugin</artifactId>
+				<version>3.2.1</version>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
