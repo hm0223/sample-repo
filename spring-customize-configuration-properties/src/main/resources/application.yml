@@ -1,0 +1,14 @@
+aaa:
+  link:
+    bbb:
+      max-retry: 3
+      endpoint: www.aaa.com
+      authApi:
+        url: /oauth2/token
+        enable: true
+      inBackApi:
+        url: /in-back-to-cpm
+        enable: true
+      outBackApi:
+        url: /out-back-to-cpm
+        enable: true
