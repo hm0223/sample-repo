@@ -38,7 +38,7 @@ public class XxxProperties {
 ## 自定义属性提示
 
 添加依赖：
-
+![spring-boot-configuration-processor.png](./images/spring-boot-configuration-processor.jpg)
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
