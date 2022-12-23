@@ -9,6 +9,7 @@
 
 [Spring Boot Actuator 动态修改日志级别](https://docs.spring.io/spring-boot/docs/2.7.7/reference/html/actuator.html#actuator.loggers)
 
+[深入浅出日志体系（logback最佳实践）](https://blog.csdn.net/significantfrank/article/details/127994390?spm=1001.2014.3001.5502)
 
 ### Guides
 > 开发访问端点
