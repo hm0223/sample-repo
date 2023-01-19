@@ -26,3 +26,12 @@ management:
 curl -X POST 'http://ip:port/actuator/loggers/{your-logging-group-name/package-name}'
 ```
 
+> 动态修改 `dynamic` 组的日志级别为 DEBUG
+```shell
+curl -X POST 'http://localhost:8080/actuator/loggers/dynamic' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "configuredLevel": "DEBUG"
+}'
+```
+
