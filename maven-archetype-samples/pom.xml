@@ -24,7 +24,7 @@
 		<module>maven-archetype-samples-service</module>
 	</modules>
 
-	<build>
+    <build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
