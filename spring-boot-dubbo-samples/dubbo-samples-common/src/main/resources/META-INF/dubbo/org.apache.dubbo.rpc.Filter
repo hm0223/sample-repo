@@ -1,0 +1,2 @@
+consumerFilter=com.hm.dubbo.samples.common.filter.ConsumerFilter
+providerFilter=com.hm.dubbo.samples.common.filter.ProviderFilter
