@@ -1,6 +1,6 @@
 package com.hm.spring.boot.logging.trace.mq.config;
 
-import com.hm.spring.boot.logging.trace.mq.interceptor.LogInterceptor;
+import com.hm.spring.boot.logging.trace.mq.core.interceptor.LogTraceInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -15,8 +15,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfigurerAdapter implements WebMvcConfigurer {
 
     @Bean
-    public LogInterceptor logInterceptor() {
-        return new LogInterceptor();
+    public LogTraceInterceptor logInterceptor() {
+        return new LogTraceInterceptor();
     }
     
     @Override

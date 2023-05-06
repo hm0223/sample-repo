@@ -1,4 +1,4 @@
-package com.hm.spring.boot.logging.trace.mq.interceptor;
+package com.hm.spring.boot.logging.trace.mq.core.interceptor;
 
 import org.slf4j.MDC;
 import org.springframework.util.ObjectUtils;
@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
 /**
- * LogInterceptor.
+ * LogTraceInterceptor.
  *
  * @author huwenfeng
  */
-public class LogInterceptor implements HandlerInterceptor {
+public class LogTraceInterceptor implements HandlerInterceptor {
 
     private static final String TRACE_ID = "TRACE_ID";
 

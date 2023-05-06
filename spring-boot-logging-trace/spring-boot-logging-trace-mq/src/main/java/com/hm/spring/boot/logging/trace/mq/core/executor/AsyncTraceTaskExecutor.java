@@ -1,4 +1,4 @@
-package com.hm.spring.boot.logging.trace.mq.executor;
+package com.hm.spring.boot.logging.trace.mq.core.executor;
 
 import com.hm.spring.boot.logging.trace.mq.util.ThreadMdcUtil;
 import org.slf4j.MDC;

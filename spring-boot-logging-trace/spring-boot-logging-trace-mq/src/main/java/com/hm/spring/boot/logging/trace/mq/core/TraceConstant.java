@@ -1,11 +1,11 @@
 package com.hm.spring.boot.logging.trace.mq.core;
 
 /**
- * Trace.
+ * TraceConstant.
  *
  * @author huwenfeng
  */
-public class Trace {
+public class TraceConstant {
 
     public static final String TRACE_ID = "TRACE_ID";
 }

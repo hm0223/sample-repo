@@ -1,12 +1,9 @@
 package com.hm.spring.boot.logging.trace.mq.controller;
 
 import com.alibaba.fastjson2.JSON;
-import com.hm.spring.boot.logging.trace.mq.core.ActiveMqTrace;
+import com.hm.spring.boot.logging.trace.mq.core.producer.JmsTemplateTraceWrapper;
 import com.hm.spring.boot.logging.trace.mq.service.LogService;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +23,7 @@ public class LogController {
     @Resource
     private LogService logService;
     @Resource
-    private ActiveMqTrace activeMqBaseTrace;
+    private JmsTemplateTraceWrapper jmsTemplateWrapper;
     
 
     @GetMapping("/log")
@@ -38,7 +35,7 @@ public class LogController {
         map.put("Name", "Mark");
         map.put("Age", 47);
         String message = JSON.toJSONString(map);
-        activeMqBaseTrace.convertAndSend("someQueue1", message);
+        jmsTemplateWrapper.convertAndSend("someQueue1", message, new HashMap<>());
         logService.asyncLog();
         log.info("log is end...");
     }

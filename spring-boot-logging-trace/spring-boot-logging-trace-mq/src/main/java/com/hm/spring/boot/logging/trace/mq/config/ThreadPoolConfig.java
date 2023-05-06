@@ -1,7 +1,7 @@
 package com.hm.spring.boot.logging.trace.mq.config;
 
 
-import com.hm.spring.boot.logging.trace.mq.executor.AsyncTraceTaskExecutor;
+import com.hm.spring.boot.logging.trace.mq.core.executor.AsyncTraceTaskExecutor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
