@@ -3,6 +3,7 @@ package com.hm.spring.boot.logging.trace.mq.core.producer;
 
 import com.hm.spring.boot.logging.trace.mq.config.annotation.ProducerTraceWrapper;
 import org.springframework.jms.core.JmsMessagingTemplate;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -20,8 +21,8 @@ public class JmsTemplateTraceWrapper {
     private JmsMessagingTemplate jmsMessagingTemplate;
 
     @ProducerTraceWrapper
-    public void convertAndSend(String destination, Object data, Map<String, Object> header) {
-        jmsMessagingTemplate.convertAndSend(destination, data, header);
+    public void convertAndSend(String destination, Object data, @NonNull Map<String, Object> headers) {
+        jmsMessagingTemplate.convertAndSend(destination, data, headers);
     }
 
 }
