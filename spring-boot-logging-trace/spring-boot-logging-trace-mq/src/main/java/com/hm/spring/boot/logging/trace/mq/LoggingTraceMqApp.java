@@ -2,18 +2,16 @@ package com.hm.spring.boot.logging.trace.mq;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
- * LoggingTraceStandaloneApp.
+ * LoggingTraceMqApp.
  *
  * @author huwenfeng
  */
 @SpringBootApplication
-public class LoggingTraceStandaloneApp {
+public class LoggingTraceMqApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(LoggingTraceStandaloneApp.class, args);
+        SpringApplication.run(LoggingTraceMqApp.class, args);
     }
 }
