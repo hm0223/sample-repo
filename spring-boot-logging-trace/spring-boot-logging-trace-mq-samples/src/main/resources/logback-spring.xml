@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false">
     <!--日志存储路径-->
-    <property name="LOG_PATH" value="./sample-repo/spring-boot-logging-trace/logs" />
+    <property name="APP_NAME" value="spring-boot-logging-trace-mq-samples" />
+    <property name="LOCAL_LOG_PATH" value="/Users/huwenfeng/apps/${APP_NAME}/logs" />
+    <property name="SERVER_LOG_PATH" value="/apps/${APP_NAME}/logs" />
     <!-- 控制台输出 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -10,10 +12,10 @@
         </encoder>
     </appender>
     <!-- 按天生成日志文件 -->
-    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="local_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件名-->
-            <FileNamePattern>${LOG_PATH}/%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>${LOCAL_LOG_PATH}/%d{yyyy-MM-dd}.log</FileNamePattern>
             <!--保留天数-->
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
@@ -29,6 +31,6 @@
     <!-- 日志输出级别 -->
     <root level="INFO">
         <appender-ref ref="console" />
-        <appender-ref ref="file" />
+        <appender-ref ref="local_file" />
     </root>
 </configuration>

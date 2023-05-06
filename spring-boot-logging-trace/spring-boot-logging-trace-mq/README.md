@@ -13,7 +13,7 @@
 ### 1. import maven dependency
 ```xml
   <dependency>
-    <groupId>org.example</groupId>
+    <groupId>com.hm</groupId>
     <artifactId>spring-boot-logging-trace-mq</artifactId>
     <version>1.0-SNAPSHOT</version>
 </dependency>

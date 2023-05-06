@@ -1,24 +1,28 @@
-package com.hm.spring.boot.logging.trace.mq.controller;
+package com.hm.spring.boot.logging.trace.controller;
 
 import com.alibaba.fastjson2.JSON;
 import com.hm.spring.boot.logging.trace.mq.core.producer.JmsTemplateTraceWrapper;
 import com.hm.spring.boot.logging.trace.mq.service.LogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.hm.spring.boot.logging.trace.controller.MqTraceConsumerTest.QUEUE_NAME;
+
 /**
- * LogController.
+ * LogTraceUseController.
  *
  * @author huwenfeng
  */
 @Slf4j
 @RestController
-public class LogController {
+@RequestMapping("/trace")
+public class LogTraceUseController {
 
     @Resource
     private LogService logService;
@@ -35,7 +39,7 @@ public class LogController {
         map.put("Name", "Mark");
         map.put("Age", 47);
         String message = JSON.toJSONString(map);
-        jmsTemplateWrapper.convertAndSend("someQueue1", message, new HashMap<>());
+        jmsTemplateWrapper.convertAndSend(QUEUE_NAME, message, new HashMap<>());
         logService.asyncLog();
         log.info("log is end...");
     }
