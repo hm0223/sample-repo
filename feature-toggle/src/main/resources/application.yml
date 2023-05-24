@@ -1,0 +1,16 @@
+togglz:
+  enabled: true
+  features:
+    FOO:
+      enabled: true
+    BAR:
+      enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
