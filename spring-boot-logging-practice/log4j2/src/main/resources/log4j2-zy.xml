@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="5">>
+
+    <!-- 定义属性变量 -->
+    <Properties>
+        <!-- 格式化输出：%date表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度 %msg：日志消息，%n是换行符-->
+        <!-- %logger{36} 表示 Logger 名字最长36个字符 -->
+        <property name="CONSOLE_LOG_PATTERN" value="%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{%5p} %clr{${sys:PID}}{magenta} %clr{[%thread]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx" />
+        <property name="LOG_PATTERN" value="%d %-5p [%t] %c - [%T] %m%n" />
+        <!-- 定义日志存储的路径 -->
+        <property name="FILE_PATH" value="./logs" />
+        <property name="FILE_PATH1" value="/Users/huwenfeng/IdeaProjects/cp-group/cp-oms/oms-base-center/logs" />
+        <property name="FILE_NAME" value="mhpt" />
+    </Properties>
+    
+    <!-- 定义appenders -->
+    <Appenders>
+        <!-- 定义名为console的appender，日志会输出到控制台中 -->
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${CONSOLE_LOG_PATTERN}"/> <!-- 定义每条日志的输出格式 -->
+        </Console>
+        <!-- 定义名为run的appender，日志将会输出到文件中，其中filePaterrn类似于log4j中的DatePattern -->
+        <RollingFile name="run" fileName="${FILE_PATH1}/run.log" filePattern="${FILE_PATH1}/run.log_%d{yyyy-MM-dd}.log">
+            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d %-5p [%t] %c - [%T] %m%n"/>
+            <Policies>
+                <!-- 根据上面设置的filePattern每隔一天重命名前一天的日志 -->
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
+            </Policies>
+        </RollingFile>
+        <!-- 定义名为exception的appender -->
+        <RollingFile name="exception" fileName="${FILE_PATH1}/exception.log"
+                     filePattern="${FILE_PATH1}/exception.log_%d{yyyy-MM-dd}.log">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+<!--            <PatternLayout pattern="[%T]%m%n"/>-->
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="metrics" fileName="${FILE_PATH1}/metrics.log" filePattern="${FILE_PATH1}/metrics.log_%d{yyyy-MM-dd}.log">
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d %-5p [%t] %c - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- name指定包名，level指定日志输出级别 -->
+        <Logger name="com.cpgroup" level="debug"/>
+        <asyncLogger name="exception.logger" level="error" additivity="false" includeLocation="true">
+            <appender-ref ref="exception"/>
+        </asyncLogger>
+        <Root level="info">
+            <appender-ref ref="console"/>
+            <appender-ref ref="exception"/>
+            <appender-ref ref="run"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
