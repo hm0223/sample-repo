@@ -25,11 +25,11 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 sample-rep <a name="about-project"></a>
+# 📖 sample-repo <a name="about-project"></a>
 
 > Describe your project in 1 or 2 sentences.
 
-**sample-rep** Used to hold some code examples.
+**sample-repo** Used to hold some code examples.
 
 ## 🛠 Built With <a name="built-with"></a>
 
