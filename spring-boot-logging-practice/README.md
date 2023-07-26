@@ -21,14 +21,25 @@ management:
         include: loggers
 ```
 
+> 按组查询日志级别
+```shell
+curl GET 'http://ip:port/actuator/loggers/{your-logging-group-name}'
+```
+
+> 按包查询日志级别
+```shell
+curl GET 'http://ip:port/actuator/loggers/{package-name}'
+```
+
+
 > 修改日志级别
 ```shell
 curl -X POST 'http://ip:port/actuator/loggers/{your-logging-group-name/package-name}'
 ```
 
-> 动态修改 `dynamic` 组的日志级别为 DEBUG
+> 动态修改组名为 `dynamic-group-sample` 组的日志级别为 DEBUG
 ```shell
-curl -X POST 'http://localhost:8080/actuator/loggers/dynamic' \
+curl -X POST 'http://localhost:8080/actuator/loggers/dynamic-group-sample' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "configuredLevel": "DEBUG"

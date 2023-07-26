@@ -2,10 +2,10 @@ logging:
   file:
     name: ./logs/run.log
   group:
-    # 方式1：通过组来设置日志级别 可以多个多个逗号隔开
-    dynamic: com.hm.springboot.logging.practice.controller,com.hm.springboot.logging.practice.rest
+    # 方式1：通过组来设置日志级别 可以多个多个逗号隔开 （ `dynamic-group-sample` ）只是一个组名称 可以自行定义
+    dynamic-group-sample: com.hm.spring.boot.logging.practice.controller,com.hm.spring.boot.logging.practice.endpoint,com.hm.spring.boot.logging.practice.rest
   level:
-    dynamic: info
+    dynamic-group-sample: info
     # 方式2：直接设置包的日志级别
     com.hm.springboot.logging.practice: debug
 

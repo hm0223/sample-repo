@@ -12,7 +12,7 @@ import java.util.concurrent.Callable;
  *
  * @author huwenfeng
  */
-public class ThreadMdcUtil {
+public class ThreadUtility {
 
     private static final String TRACE_ID = "TRACE_ID";
 
