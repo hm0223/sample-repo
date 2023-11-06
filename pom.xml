@@ -18,9 +18,6 @@
 		<java.version>1.8</java.version>
 		<pj.version>1.0.0</pj.version>
 	</properties>
-	<modules>
-		<module>maven-archetype-samples</module>
-    </modules>
 
 	<dependencyManagement>
 		<dependencies>
