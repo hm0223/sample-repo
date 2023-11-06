@@ -1,9 +1,9 @@
-package com.hm.geek.beauty.design.ch01_ch14.security;
+package com.hm.geek.beauty.design.ch13_ch14.security;
 
 import com.alibaba.fastjson2.JSON;
-import com.hm.geek.beauty.design.ch01_ch14.ApiAuthRequest;
-import com.hm.geek.beauty.design.ch01_ch14.ApiResponse;
-import com.hm.geek.beauty.design.ch01_ch14.auth.ApiAuthenticator;
+import com.hm.geek.beauty.design.ch13_ch14.ApiAuthRequest;
+import com.hm.geek.beauty.design.ch13_ch14.ApiResponse;
+import com.hm.geek.beauty.design.ch13_ch14.auth.ApiAuthenticator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;

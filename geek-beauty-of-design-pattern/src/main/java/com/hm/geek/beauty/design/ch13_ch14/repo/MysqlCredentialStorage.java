@@ -1,4 +1,4 @@
-package com.hm.geek.beauty.design.ch01_ch14.repo;
+package com.hm.geek.beauty.design.ch13_ch14.repo;
 
 /**
  * MysqlCredentialStorage.

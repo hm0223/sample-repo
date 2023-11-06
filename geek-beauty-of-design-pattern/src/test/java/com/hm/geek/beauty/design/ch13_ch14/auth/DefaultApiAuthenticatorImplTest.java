@@ -1,9 +1,9 @@
-package com.hm.geek.beauty.design.ch01_ch14.auth;
+package com.hm.geek.beauty.design.ch13_ch14.auth;
 
-import com.hm.geek.beauty.design.ch01_ch14.ApiAuthRequest;
-import com.hm.geek.beauty.design.ch01_ch14.ApiResponse;
-import com.hm.geek.beauty.design.ch01_ch14.repo.CredentialStorage;
-import com.hm.geek.beauty.design.ch01_ch14.util.MD5s;
+import com.hm.geek.beauty.design.ch13_ch14.ApiAuthRequest;
+import com.hm.geek.beauty.design.ch13_ch14.ApiResponse;
+import com.hm.geek.beauty.design.ch13_ch14.repo.CredentialStorage;
+import com.hm.geek.beauty.design.ch13_ch14.util.MD5s;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,7 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static com.hm.geek.beauty.design.ch01_ch14.repo.MemoryCredentialStorage.TEST_PASSWORD;
+import static com.hm.geek.beauty.design.ch13_ch14.repo.MemoryCredentialStorage.TEST_PASSWORD;
 import static org.mockito.Mockito.*;
 
 @Slf4j

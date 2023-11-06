@@ -1,10 +1,10 @@
-package com.hm.geek.beauty.design.ch01_ch14.auth;
+package com.hm.geek.beauty.design.ch13_ch14.auth;
 
-import com.hm.geek.beauty.design.ch01_ch14.ApiAuthRequest;
-import com.hm.geek.beauty.design.ch01_ch14.ApiResponse;
-import com.hm.geek.beauty.design.ch01_ch14.AuthToken;
-import com.hm.geek.beauty.design.ch01_ch14.repo.CredentialStorage;
-import com.hm.geek.beauty.design.ch01_ch14.repo.MemoryCredentialStorage;
+import com.hm.geek.beauty.design.ch13_ch14.ApiAuthRequest;
+import com.hm.geek.beauty.design.ch13_ch14.ApiResponse;
+import com.hm.geek.beauty.design.ch13_ch14.AuthToken;
+import com.hm.geek.beauty.design.ch13_ch14.repo.CredentialStorage;
+import com.hm.geek.beauty.design.ch13_ch14.repo.MemoryCredentialStorage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

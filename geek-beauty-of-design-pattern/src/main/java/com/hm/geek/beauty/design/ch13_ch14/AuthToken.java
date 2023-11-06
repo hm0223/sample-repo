@@ -1,6 +1,6 @@
-package com.hm.geek.beauty.design.ch01_ch14;
+package com.hm.geek.beauty.design.ch13_ch14;
 
-import com.hm.geek.beauty.design.ch01_ch14.util.MD5s;
+import com.hm.geek.beauty.design.ch13_ch14.util.MD5s;
 import lombok.Data;
 import lombok.SneakyThrows;
 
