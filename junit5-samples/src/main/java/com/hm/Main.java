@@ -72,7 +72,7 @@ public class Main {
 
     public static String readContentFromHtml() {
         // 创建File对象  
-        ClassPathResource classPathResource = new ClassPathResource("samples.html");
+        ClassPathResource classPathResource = new ClassPathResource("fetch/samples.html");
         try (
                 // 创建BufferedReader对象  
                 BufferedReader reader = new BufferedReader(new FileReader(classPathResource.getFile()))) {
