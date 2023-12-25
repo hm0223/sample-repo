@@ -5,6 +5,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.lang.NonNull;
 import org.springframework.util.StringUtils;
 
 import java.io.BufferedReader;
@@ -30,7 +31,8 @@ public class Main {
         List<String> links = new ArrayList<>();
         for (Element linkElement : linkElements) {
             String src = linkElement.attr("src");
-            links.add(src.substring(1, src.length() - 2));
+            int start = src.indexOf("http");
+            links.add(src.substring(start, src.length() - 2));
             // System.out.println("链接: " + src.substring(2, src.length() - 2));
         }
         Elements spanElements = document.select("span");
@@ -39,7 +41,11 @@ public class Main {
             if ("errorLink".equals(aClass)) {
                 links.add(spanElement.ownText());
                 // System.out.println("链接: " + spanElement.ownText());
-            }
+            } else {
+                if (spanElement.ownText().contains("http")) {
+                    links.add(spanElement.ownText());
+                }
+            } 
         }
 
         // 获取所有链接元素  
@@ -70,6 +76,7 @@ public class Main {
         }
     }
 
+    @NonNull
     public static String readContentFromHtml() {
         // 创建File对象  
         ClassPathResource classPathResource = new ClassPathResource("fetch/samples.html");
@@ -89,6 +96,6 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return "";
     }
 }
