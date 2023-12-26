@@ -2,6 +2,8 @@ package com.hm;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,15 +19,24 @@ import static com.hm.Main.readContentFromHtml;
  * @author huwenfeng
  */
 public class MainV2 {
+    public static final String INNER_DOMAIN = "mmbiz.qpic.cn";
+    public static final String INNER_STYLE_TAG = "http://www.w3.org";
 
-    public static final Pattern COMPILE = Pattern.compile("(https?://[^<>\"]+)");
+    private static final Logger LOGGER = LoggerFactory.getLogger(MainV2.class);
+
+    public static final Pattern COMPILE = Pattern.compile("((http|https)://)(www.)?"
+            + "[a-zA-Z0-9@:%._\\+~#?&//=]"
+            + "{2,256}\\.[a-z]"
+            + "{2,6}\\b([-a-zA-Z0-9@:%"
+            + "._\\+~#?&//=]*)");
 
     public static void main(String[] args) throws IOException {
-        printDocLinkAndTitle();
+        fetchDocLinkAndTitle();
     }
 
-    private static void printDocLinkAndTitle() throws IOException {
+    private static void fetchDocLinkAndTitle() throws IOException {
         Matcher matcher = COMPILE.matcher(readContentFromHtml());
+        // Matcher matcher = COMPILE.matcher("测试出门警惕“开门杀” 都是随意惹得祸#交通安全https://ptgl.fujian.gov.cn:88/zwxmt/#/login都是随意惹得二号https://ptgl.fujian.gov.cn:88/zwxmt/#/login");
         List<String> links = new ArrayList<>();
         while (matcher.find()) {
             links.add(matcher.group());
@@ -33,18 +44,18 @@ public class MainV2 {
 
         // 过滤需要的文章和标题
         for (String link : links) {
-            if (link.contains("mmbiz.qpic.cn") || link.contains("http://www.w3.org")) {
-                System.out.println("Ignore Link=" + link);
+            if (link.contains(INNER_DOMAIN) || link.contains(INNER_STYLE_TAG)) {
+                LOGGER.info("Ignore Link={}", link);
                 continue;
             }
-            Document document1 = Jsoup.connect(link)
+            Document document = Jsoup.connect(link)
                     .ignoreHttpErrors(true)
                     .timeout(2000)
                     // 方便抓取https内容
                     .validateTLSCertificates(false)
                     .get();
-            String title = document1.title();
-            System.out.println("Fetch Link=" + link + "、" + "Title=" + title);
+            String title = document.title();
+            LOGGER.info("Fetch Link={}; Title={}", link, title);
         }
     }
 
