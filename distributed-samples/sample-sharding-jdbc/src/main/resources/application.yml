@@ -1,0 +1,109 @@
+spring:
+  shardingsphere:
+    datasource:
+      names: ds_1, ds_2
+      ds_1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://10.211.55.40:3306/ds_1?useSSL=false&verifyServerCertificate=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+        username: root
+        password: 123456
+      ds_2:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://10.211.55.40:3307/ds_2?useSSL=false&verifyServerCertificate=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+        username: root
+        password: 123456
+    
+    # 是否启用 Sharding
+    enabled: true
+    # 打印sql
+    props:
+      sql-show: true
+    rules:
+      sharding:
+#        # 数据分片规则配置
+#        tables:
+#          # 表名
+#          orders: 
+#            actual-data-nodes: ds_${1..2}.orders_${0..9}
+#            database-strategy:
+#              standard:
+#                sharding-column: user_id
+#                sharding-algorithm-name: database_inline
+#            table-strategy:
+#              standard:
+#                sharding-column: user_id
+#                sharding-algorithm-name: t_order_inline
+        
+        # 自动分片表规则配置
+        auto-tables:
+          orders:
+            logic-table: orders_${0..9}
+            actual-data-sources: ds_${1..2}
+            sharding-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: auto_table_mod  
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflake  
+        # 绑定表规则列表    
+#        binding-tables:
+        
+        # 默认数据库分片策略
+#        default-database-strategy:
+        
+        # 默认表分片策略
+#        default-table-strategy:
+        
+        # 默认的分布式序列策略
+#        default-key-generate-strategy:
+        
+        # 默认审核策略
+#        default-audit-strategy:
+        
+        # 默认分片列名称
+#        default-sharding-column:
+          
+        # 广播表规则列表
+#        broadcast-tables:
+        
+        # 分片算法配置
+        sharding-algorithms:
+          database_inline: 
+            type: INLINE
+            props:
+              algorithm-expression: ds_${user_id % 2}
+          t_order_inline:
+            type: INLINE
+            props:
+              algorithm-expression: orders_${user_id % 10}  
+          auto_table_mod:
+           type: MOD
+           props:
+             sharding-count: 10
+              
+        # 分布式序列算法配置  
+        key-generators:
+          snowflake: 
+            type: SNOWFLAKE
+          
+        # 分片审计算法配置
+  #        auditors:
+      
+      # 读写分离配置
+      readwrite-splitting:
+        data-sources:
+          write-0:
+            static-strategy:
+              write-data-source-name: ds_1
+              read-data-source-names:
+                - ds_2
+#            dynamic-strategy:
+#              auto-aware-data-source-name: 
+#              write-data-source-query-enabled: false 
+            load-balancer-name: random   
+        load-balancers:
+          random:
+            type: RANDOM

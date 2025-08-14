@@ -1,44 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	
-	<artifactId>sample-repo</artifactId>
-	<groupId>com.hm0223</groupId>
-	<version>1.0.0</version>
-	<name>sample-repo</name>
-	<description>sample-repo</description>
-	<packaging>pom</packaging>
-	<properties>
-		<java.version>1.8</java.version>
-		<pj.version>1.0.0</pj.version>
-	</properties>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.hm0223</groupId>
+        <artifactId>sample-dependencies</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>infrastructure/sample-dependencies/pom.xml</relativePath>
+    </parent>
+    
+    <artifactId>sample-repo</artifactId>
+    <name>sample-repo</name>
+    <description>示例项目父模块</description>
+    <packaging>pom</packaging>
+    
+    <properties>
+        <!-- 项目版本统一管理 -->
+        <revision>1.0.0</revision>
+        <changelist>-SNAPSHOT</changelist>
+        
+        <!-- 项目版本 -->
+        <project.version>${revision}${changelist}</project.version>
+        
+        <!-- 构建配置 -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        
+        <!-- 插件版本 -->
+        <flatten-maven-plugin.version>1.4.1</flatten-maven-plugin.version>
+        <maven-release-plugin.version>3.0.0-M7</maven-release-plugin.version>
+        <versions-maven-plugin.version>2.15.0</versions-maven-plugin.version>
+    </properties>
+    
+    <modules>
+        <!-- 基础设施模块 -->
+        <module>infrastructure/sample-dependencies</module>
+        <module>infrastructure/sample-maven-archetype</module>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>2.7.5</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+        <!-- Spring Boot 示例模块 -->
+        <module>springboot-samples/sample-springboot-config</module>
+        <module>springboot-samples/sample-springboot-devtools</module>
+        <module>springboot-samples/sample-springboot-dubbo</module>
+        <module>springboot-samples/sample-springboot-logging</module>
+        <module>springboot-samples/sample-springboot-logging-trace</module>
+        <module>springboot-samples/sample-springboot-mq</module>
+        <module>springboot-samples/sample-springboot-test</module>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>2.7.5</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-archetype-plugin</artifactId>
-				<version>3.2.1</version>
-			</plugin>
-		</plugins>
-	</build>
+        <!-- 分布式相关模块 -->
+        <module>distributed-samples/sample-sharding-jdbc</module>
 
+        <!-- 核心示例模块 -->
+        <module>core-samples/sample-feature-toggle</module>
+        <module>core-samples/sample-design-pattern</module>
+        <module>core-samples/sample-junit5</module>
+    </modules>
+    
+    <build>
+        <plugins>
+            <!-- 版本管理插件 -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.2.1-SNAPSHOT</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!-- 发布插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>1.2.1-SNAPSHOT</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <pushChanges>false</pushChanges>
+                    <releaseProfiles>release</releaseProfiles>
+                </configuration>
+            </plugin>
+            
+            <!-- 版本检查插件 -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>1.2.1-SNAPSHOT</version>
+                <configuration>
+                    <generateBackupPoms>false</generateBackupPoms>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>1.2.1-SNAPSHOT</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

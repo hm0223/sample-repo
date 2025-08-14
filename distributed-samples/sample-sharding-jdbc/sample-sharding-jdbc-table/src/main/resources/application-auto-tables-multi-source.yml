@@ -1,0 +1,47 @@
+spring:
+  shardingsphere:
+    datasource:
+      names: ds_1,ds_2
+      ds_1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://10.211.55.40:3306/ds_1?useSSL=false&verifyServerCertificate=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+        username: root
+        password: 123456
+      ds_2:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://10.211.55.40:3306/ds_2?useSSL=false&verifyServerCertificate=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+        username: root
+        password: 123456   
+    
+    # 是否启用 Sharding
+    enabled: true
+    # 打印sql
+    props:
+      sql-show: true
+    rules:
+      sharding:
+        # 自动分片表规则配置
+        auto-tables:
+          orders:
+            logic-table: orders_${0..9}
+            actual-data-sources: master
+            sharding-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: auto_table_mod  
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflake   
+        # 分片算法配置
+        sharding-algorithms:
+          auto_table_mod:
+           type: MOD
+           props:
+             sharding-count: 10          
+        # 分布式序列算法配置  
+        key-generators:
+          snowflake: 
+            type: SNOWFLAKE
+          

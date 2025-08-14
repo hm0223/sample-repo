@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>sample-dependencies</artifactId>
+        <groupId>com.hm0223</groupId>
+        <version>1.2.1-SNAPSHOT</version>
+        <relativePath>../../infrastructure/sample-dependencies/pom.xml</relativePath>
+    </parent>
+    
+    <artifactId>sample-springboot-dubbo</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>sample-springboot-dubbo</name>
+    <description>Spring Boot 集成 Dubbo 示例</description>
+    <packaging>pom</packaging>
+    
+    <modules>
+        <module>sample-springboot-dubbo-interface</module>
+        <module>sample-springboot-dubbo-common</module>
+        <module>sample-springboot-dubbo-provider</module>
+        <module>sample-springboot-dubbo-consumer</module>
+    </modules>
+
+    <dependencies>
+        <!-- Dubbo -->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-dependencies-zookeeper-curator5</artifactId>
+            <type>pom</type>
+        </dependency>
+
+        <!-- Spring Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+</project>
