@@ -1,6 +1,6 @@
 package com.hm.spring.boot.logging.trace.controller;
 
-import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson.JSON;
 import com.hm.spring.boot.logging.trace.mq.core.producer.JmsTemplateTraceWrapper;
 import com.hm.spring.boot.logging.trace.mq.service.LogService;
 import lombok.extern.slf4j.Slf4j;
