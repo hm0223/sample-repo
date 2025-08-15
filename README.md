@@ -1,155 +1,218 @@
 <a name="readme-top"></a>
 <div align="center">
 
-[//]: # (  <img src="dog.png" alt="logo" width="140"  height="auto" />)
-  <br/>
-<h3><b></b></h3>
-</div>
+# 🚀 Sample Repository
 
-<!-- TABLE OF CONTENTS  -->
+**一个全面的Java技术栈示例代码库**  
+包含核心Java、Spring Boot、分布式系统等各个方面的最佳实践和示例代码。
+
+[![Java](https://img.shields.io/badge/Java-8-orange.svg)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7.5-green.svg)](https://spring.io/projects/spring-boot)
+[![Maven](https://img.shields.io/badge/Maven-3.6.3-blue.svg)](https://maven.apache.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+</div>
 
 # 📗 Table of Contents
 
-- [📖 About the Project](#about-project)
-    - [🛠 Built With](#built-with)
-        - [Tech Stack](#tech-stack)
-        - [Key Features](#key-features)
-    - [🚀 Live Demo](#live-demo)
-- [💻 Getting Started](#getting-started)
-    - [Setup](#setup)
-    - [Prerequisites](#prerequisites)
-    - [Install](#install)
-    - [Usage](#usage)
-    - [Run tests](#run-tests)
-    - [Deployment](#triangular_flag_on_post-deployment)
+- [📖 关于项目](#about-project)
+    - [🛠 技术栈](#tech-stack)
+    - [✨ 项目特性](#key-features)
+    - [📁 项目结构](#project-structure)
+- [🚀 快速开始](#getting-started)
+    - [📋 前置条件](#prerequisites)
+    - [⚙️ 环境搭建](#setup)
+    - [📦 安装依赖](#install)
+    - [▶️ 运行项目](#usage)
+    - [🧪 运行测试](#run-tests)
+- [📚 模块说明](#modules)
+- [🤝 贡献指南](#contributing)
+- [📄 许可证](#license)
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 sample-repo <a name="about-project"></a>
+# 📖 关于项目 <a name="about-project"></a>
 
-> Describe your project in 1 or 2 sentences.
+这是一个综合性的Java技术栈示例代码库，旨在为开发者提供各种常用技术和最佳实践的参考实现。项目采用模块化设计，涵盖了从核心Java特性到现代微服务架构的各个方面。
 
-**sample-repo** Used to hold some code examples.
+## 🛠 技术栈 <a name="tech-stack"></a>
 
-## 🛠 Built With <a name="built-with"></a>
+### 核心技术
+[![Java](https://img.shields.io/badge/Java-8-important.svg)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7.5-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![Maven](https://img.shields.io/badge/Maven-3.6.3-blue.svg)](https://maven.apache.org/)
 
-### Tech Stack <a name="tech-stack"></a>
+### 数据存储
+[![MySQL](https://img.shields.io/badge/MySQL-8.0+-blue.svg)](https://www.mysql.com/)
+[![Redis](https://img.shields.io/badge/Redis-6.0+-red.svg)](https://redis.io/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-4.0+-green.svg)](https://www.mongodb.com/)
 
-> Describe the tech stack and include only the relevant sections that apply to your project.
+### 消息队列
+[![RabbitMQ](https://img.shields.io/badge/RabbitMQ-3.8+-orange.svg)](https://www.rabbitmq.com/)
+[![RocketMQ](https://img.shields.io/badge/RocketMQ-4.8+-blue.svg)](https://rocketmq.apache.org/)
+[![ActiveMQ](https://img.shields.io/badge/ActiveMQ-5.16+-blue.svg)](https://activemq.apache.org/)
 
-<details>
-  <summary>Spring</summary>
-  <ul>
-    <li><a href="https://spring.io/">Spring.io</a></li>
-  </ul>
-</details>
+### 监控&日志
+[![Spring Boot Actuator](https://img.shields.io/badge/Actuator-3.x-green.svg)](https://spring.io/projects/spring-boot)
+[![Logback](https://img.shields.io/badge/Logback-1.4+-yellow.svg)](http://logback.qos.ch/)
+[![Log4j2](https://img.shields.io/badge/Log4j2-2.17+-green.svg)](https://logging.apache.org/log4j/2.x/)
 
-<details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.mysql.com/">MySQL</a></li>
-  </ul>
-</details>
-<!-- Features -->
+### 测试框架
+[![JUnit5](https://img.shields.io/badge/JUnit-5.x-green.svg)](https://junit.org/junit5/)
+[![Mockito](https://img.shields.io/badge/Mockito-4.x-blue.svg)](https://site.mockito.org/)
 
-### Key Features <a name="key-features"></a>
+## ✨ 项目特性 <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
+- **📚 模块化设计**：清晰的模块划分，每个示例都是独立的可运行项目
+- **🎯 实战导向**：每个示例都来源于实际开发场景，解决真实问题
+- **🛠 最佳实践**：遵循业界最佳实践，代码规范，文档完善
+- **🔄 持续更新**：紧跟技术发展趋势，定期更新示例代码
+- **📖 详细文档**：每个模块都有详细的README和使用说明
 
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+## 📁 项目结构 <a name="project-structure"></a>
+
+```
+sample-repo/
+├── 📁 core-samples/          # 核心Java技术示例
+├── 📁 springboot-samples/    # Spring Boot技术示例
+├── 📁 distributed-samples/   # 分布式系统示例
+├── 📁 infrastructure/        # 基础设施和工具
+├── 📁 plugin-config-examples/# 插件配置示例
+└── 📄 pom.xml               # 根POM配置
+```
+
+## 📚 模块说明 <a name="modules"></a>
+
+### 🔧 Core Samples - 核心Java技术
+- **[sample-design-pattern](./core-samples/sample-design-pattern/)** - 设计模式实战：接口鉴权功能的面向对象设计
+- **[sample-feature-toggle](./core-samples/sample-feature-toggle/) - 特性开关实现：动态控制功能启用/禁用
+- **[sample-junit5](./core-samples/sample-junit5/) - JUnit5测试框架：全面测试示例
+
+### 🌱 Spring Boot Samples - Spring Boot技术栈
+- **[sample-springboot-config](./springboot-samples/sample-springboot-config/) - 配置管理：自定义属性配置和提示
+- **[sample-springboot-devtools](./springboot-samples/sample-springboot-devtools/) - 开发工具：提升开发效率
+- **[sample-springboot-dubbo](./springboot-samples/sample-springboot-dubbo/) - Dubbo集成：分布式服务调用
+- **[sample-springboot-logging](./springboot-samples/sample-springboot-logging/) - 日志系统：Logback和Log4j2实现
+- **[sample-springboot-logging-trace](./springboot-samples/sample-springboot-logging-trace/) - 链路追踪：分布式调用链追踪
+- **[sample-springboot-mq](./springboot-samples/sample-springboot-mq/) - 消息队列：ActiveMQ和RocketMQ集成
+- **[sample-springboot-test](./springboot-samples/sample-springboot-test/) - 测试实践：Spring Boot测试策略
+
+### 🏗️ Distributed Samples - 分布式系统
+- **[sample-sharding-jdbc](./distributed-samples/sample-sharding-jdbc/) - 分库分表：Sharding-JDBC实战
+
+### 🛠️ Infrastructure - 基础设施
+- **[sample-dependencies](./infrastructure/sample-dependencies/) - 依赖管理：统一的依赖版本控制
+- **[sample-maven-archetype](./infrastructure/sample-maven-archetype/) - Maven原型：项目模板生成
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LIVE DEMO -->
+## 🤝 贡献指南 <a name="contributing"></a>
 
-## 🚀 Live Demo <a name="live-demo"></a>
+我们欢迎所有形式的贡献！
 
-> Add a link to your deployed project.
+### 📝 贡献方式
+- 🐛 报告Bug
+- 💡 提出新功能建议
+- 📖 完善文档
+- 🔧 提交代码改进
 
-- [Live Demo Link](https://yourdeployedapplicationlink.com)
+### 🔄 提交规范
+1. Fork本项目
+2. 创建功能分支：`git checkout -b feature/AmazingFeature`
+3. 提交更改：`git commit -m 'Add some AmazingFeature'`
+4. 推送到分支：`git push origin feature/AmazingFeature`
+5. 创建Pull Request
+
+### 📋 代码规范
+- 遵循阿里巴巴Java开发规范
+- 所有代码必须通过Checkstyle检查
+- 单元测试覆盖率不低于80%
+- 所有公共方法必须有Javadoc
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- GETTING STARTED -->
+## 📄 许可证 <a name="license"></a>
 
-## 💻 Getting Started <a name="getting-started"></a>
+本项目采用MIT许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
 
-> Describe how a new developer could make use of your project.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-To get a local copy up and running, follow these steps.
+## 🚀 快速开始 <a name="getting-started"></a>
 
-### Prerequisites
+### 📋 前置条件 <a name="prerequisites"></a>
 
-In order to run this project you need:
+在开始之前，请确保您的开发环境满足以下要求：
 
-<!--
-Example command:
+- **Java**: JDK 8
+  ```bash
+  java -version
+  ```
+- **Maven**: 3.6.3
+  ```bash
+  mvn -version
+  ```
+- **IDE**: IntelliJ IDEA 或 Eclipse (推荐 IntelliJ IDEA)
+- **Git**: 用于克隆项目
 
-```sh
- 
-```
- -->
+### ⚙️ 环境搭建 <a name="setup"></a>
 
-### Setup
+1. 克隆项目到本地
+   ```bash
+   git clone https://github.com/your-username/sample-repo.git
+   cd sample-repo
+   ```
 
-Clone this repository to your desired folder:
+2. 验证项目结构
+   ```bash
+   ls -la
+   ```
 
-<!--
-Example commands:
+### 📦 安装依赖 <a name="install"></a>
 
-```sh
-  cd my-folder
-  git clone git@github.com:myaccount/my-project.git
-```
---->
+1. 安装所有依赖
+   ```bash
+   mvn clean install
+   ```
 
-### Install
+2. 验证安装结果
+   ```bash
+   mvn clean compile
+   ```
 
-Install this project with:
+### ▶️ 运行项目 <a name="usage"></a>
 
-<!--
-Example command:
+每个示例模块都是独立的，可以单独运行：
 
-```sh
-```
---->
+1. 进入特定模块
+   ```bash
+   cd springboot-samples/sample-springboot-config
+   ```
 
-### Usage
+2. 运行Spring Boot应用
+   ```bash
+   mvn spring-boot:run
+   ```
 
-To run the project, execute the following command:
+3. 访问应用
+   - 默认端口: `8080`
+   - 健康检查: `http://localhost:8080/actuator/health`
 
-<!--
-Example command:
+### 🧪 运行测试 <a name="run-tests"></a>
 
-```sh
-  
-```
---->
+1. 运行所有测试
+   ```bash
+   mvn test
+   ```
 
-### Run tests
+2. 运行特定模块测试
+   ```bash
+   cd core-samples/sample-design-pattern
+   mvn test
+   ```
 
-To run tests, run the following command:
-
-<!--
-Example command:
-
-```sh
-  
-```
---->
-
-### Deployment
-
-You can deploy this project using:
-
-<!--
-Example:
-
-```sh
-
-```
- -->
+3. 生成测试报告
+   ```bash
+   mvn surefire-report:report
+   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
